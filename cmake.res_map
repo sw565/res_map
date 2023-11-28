@@ -1,0 +1,9 @@
+set (EXENAME res_map)
+
+FILE (GLOB SRC_FILES "*.f90")
+
+set (LINK_LIBS
+  bmad
+  sim_utils
+  ${ACC_BMAD_LINK_LIBS}
+)
