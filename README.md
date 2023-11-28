@@ -3,4 +3,8 @@ Use the map-based method PTC to calculate the fixed points in the phase space wh
 
 Require library/packages Bmad and sim_utils (https://github.com/bmad-sim/bmad-ecosystem)
 
-Compile with mk
+Compile with "mk"
+
+Example input file "input.in"
+
+Run with "res_map input_file"
