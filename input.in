@@ -1,0 +1,7 @@
+&input
+lat_file = "desy4_v1.bmad"
+!set_tunes = T
+Qx_Hz = 317
+!Qy_Hz = 235.2
+map_order = 5
+/
