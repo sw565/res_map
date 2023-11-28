@@ -25,8 +25,7 @@ subroutine ptc_calc_fps_5nux (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
   !resonant map calculation
   type(c_damap) N_c
   type(c_universal_taylor) H_res
-  logical use_vector_field
-  integer mf,mfo, i, j, fact
+  integer mf, mfo, i, j, fact
   complex(rp) del, alpha_xx_half, gamma
   
   real(rp) jx(2)
@@ -35,7 +34,7 @@ subroutine ptc_calc_fps_5nux (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
   real(rp) x1(6), x2(6)
   real(rp) g, phi0, phi
 
-  real(rp) jx_fp(2), param(3)
+  real(rp) jx_fp(2)
   real(rp) o_sfp(10,6), o_ufp(10,6)
 
   ! for cubic solutions
@@ -182,11 +181,6 @@ subroutine ptc_calc_fps_5nux (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
   jx_fp = jx**2
   write(6,'(a,2es15.5, 2(a,es15.5))') " jx: ", jx_fp, " phi0: ", phi0, " g: ", g
      
-!  optimize directly on alphaxx and g
-  param(1) =real(alpha_xx_half)
-  param(2) = g
-  param(3) = phi0
-  
   do j=1,5
      phi = twopi*(j-2)
      
