@@ -10,7 +10,6 @@ subroutine ptc_calc_fps_5nux (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
   
   type(lat_struct), target :: lat
   integer map_order
-!  complex(rp), optional :: alpha_xx, g_fpp
   
   type(probe) xs0 
   type(probe_8) xs
@@ -93,10 +92,7 @@ subroutine ptc_calc_fps_5nux (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
   call propagate(xs,state,fibre1=p)
   one_turn_map=xs ! PTC -> FPP
   
- ! Resonant Map for the coefficients
-  
- ! normal_form%positive=.false.! for tunes conversion to positive or not
-  
+ ! Resonant Map for the coefficients 
   normal_form%nres=(c_%no+1)/5
 !  write(6,*) " # of resonance terms ",normal_form%nres
   do i=1, (c_%no+1)/5
@@ -112,38 +108,22 @@ subroutine ptc_calc_fps_5nux (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
   fact=nint(normal_form%tune(1)*5)  ! this determines whether is near 3/5 or 4/5
 !  print *, "factor: ", fact
   
-  use_vector_field =.false.
-  if(use_vector_field) then
-     normal_form%h_l%v(1)=( i_*twopi*fact/5.0)*dz_c(1)+normal_form%h_l%v(1)
-     normal_form%h_l%v(2)=(-i_*twopi*fact/5.0)*dz_c(2)+normal_form%h_l%v(2)
-     normal_form%h_l%v(3)=0.0_rp
-     normal_form%h_l%v(4)=0.0_rp
-     N_c=exp(normal_form%h_l)
-     N_c=exp(normal_form%h_nl,N_c)
-  else
-     normal_form%h_l=0
-     normal_form%h_l%v(1)=( i_*twopi*fact/5.0)*dz_c(1) 
-     normal_form%h_l%v(2)=(-i_*twopi*fact/5.0)*dz_c(2)
-     normal_form%h_l%v(3)=( i_*twopi*normal_form%tune(2))*dz_c(3) 
-     normal_form%h_l%v(4)=(-i_*twopi*normal_form%tune(2))*dz_c(4) 
+  normal_form%h_l=0
+  normal_form%h_l%v(1)=( i_*twopi*fact/5.0)*dz_c(1) 
+  normal_form%h_l%v(2)=(-i_*twopi*fact/5.0)*dz_c(2)
+  normal_form%h_l%v(3)=( i_*twopi*normal_form%tune(2))*dz_c(3) 
+  normal_form%h_l%v(4)=(-i_*twopi*normal_form%tune(2))*dz_c(4) 
 
-     normal_form%h_l=ci_phasor()*normal_form%h_l
-     N_c=normal_form%atot**(-1)*one_turn_map*normal_form%atot
-     id=exp(normal_form%h_l)
-     N_c=id*N_c
-     N_c=ci_phasor()*N_c*c_phasor()
-  endif
+  normal_form%h_l=ci_phasor()*normal_form%h_l
+  N_c=normal_form%atot**(-1)*one_turn_map*normal_form%atot
+  id=exp(normal_form%h_l)
+  N_c=id*N_c
+  N_c=ci_phasor()*N_c*c_phasor()
 
   normal_form%h=c_logf_spin(N_c)  ! this shows message "no convergence in c_logf_spin"
 
   call d_field_for_demin(normal_form%h, H_res)
   call clean(H_res,H_res,prec=1.d-5)
-!  call print(H_res)
-!  write(mf,*)
-!  write(mf,*) " -2*pi*H_r "
-!  write(mf,*)
-!  call print(H_res,mf)
-
 
 ! Now calculate the fixed points:
 
@@ -240,17 +220,9 @@ subroutine ptc_calc_fps_5nux (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
      o_sfp(j+5,:)=x1 ! estimate
      o_ufp(j+5,:)=x2
      
-!     write(6,*) 'Estimate SFPs in phasors ', j, ': '
-!     write(6,format4) f1%x(1:2) 
+
      call Newton_search(normal_form%h,f1)
-!     write(6,*) 'After Newton search FPs ', j, ': '
-!     write(6,format4) f1%x(1:2)
-     
-!     write(6,*) 'Estimate UFPs in phasors ', j, ': '
-!     write(6,format4) f2%x(1:2) 
      call Newton_search(normal_form%h,f2)
-!     write(6,*) 'After Newton search FPs ', j, ': '
-!     write(6,format4)f2%x(1:2)
 
      ! transfer fixed points from normalized space to real space  
      fix1=f1
@@ -284,11 +256,6 @@ subroutine ptc_calc_fps_5nux (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
   call kill(normal_form)  
   call kill(N_c)
 
-
-  goto 1001
-  
 1000 call ptc_end(graphics_maybe=1,flat_file=.false.)
-
-1001 continue
   
 end subroutine ptc_calc_fps_5nux
