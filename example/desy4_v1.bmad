@@ -1,0 +1,491 @@
+!+
+! Translated from MADX to Bmad by madx_to_bmad.py
+! File: desy4_4_bmad.seq
+!-
+parameter[lattice] = DESY4_BOOSTER
+beam, energy = 6.
+
+none = 0
+kd = -1.051088
+k2s_f = 33.8192   ! 32.8192
+kf = 1.84694
+k2s_d = -106.1984  !-91.1984
+kf_ql3 = 1.220843
+kd_ql2 = -1.406383
+kf_ql1 = 0.630896
+k2l_h10 = -29.39893563799912
+k2l_h20 = -6.758315915273102
+k2l_h11 = -29.39893563799912
+k2l_h21 = -6.758315915273102
+k2l_h12 = -29.39893563799912
+k2l_h22 = -6.758315915273102
+kick = 0
+
+initial: marker
+bpm: monitor
+eseptum: marker
+! Large beta quadrupoles for matching
+
+!Harmonic sextupoles
+
+k2l_hs1 = -42.5
+k2l_hs2 = -19.1
+
+sh1_0: sextupole, l = 0.1, k2 = k2l_h10
+sh2_0: sextupole, l = 0.1, k2 = k2l_h20
+sh1_1: sextupole, l = 0.1, k2 = k2l_hs1
+sh2_1: sextupole, l = 0.1, k2 = k2l_hs2
+sh1_2: sextupole, l = 0.1, k2 = k2l_h12
+sh2_2: sextupole, l = 0.1, k2 = k2l_h22
+
+
+ql3: quadrupole, l = 0.5, k1 = kf_ql3
+ql2: quadrupole, l = 0.5, k1 = kd_ql2
+corxy: kicker, l = 0.1
+ql1: quadrupole, l = 0.3, k1 = kf_ql1
+bh: sbend, l = 1.2, angle = 0.05672320069, e1 = 0.02836160034, e2 = 0.02836160034
+bump2: kicker, l = 0.3, hkick = kick
+qd0: quadrupole, l = 0.5, k1 = kd
+sf: sextupole, l = 0.1, k2 = k2s_f
+a1_s: marker
+qf1: quadrupole, l = 0.5, k1 = kf
+bd: sbend, l = 1.6, angle = 0.09337511498, k1 = -0.283272, e1 = 0.04668755749, e2 = 0.04668755749
+sd: sextupole, l = 0.1, k2 = k2s_d
+a1_e: marker
+qs1: quadrupole, l = 0.3, k1 = -1.393268
+qs2: quadrupole, l = 0.5, k1 = 2.084918
+qs3: quadrupole, l = 0.5, k1 = -1.487578
+!rfc: instrument, l = 1.8
+rfc: rfcavity, l = 1.8, volt = 1.33e6, harmon = 528
+a2_s: marker
+a2_e: marker
+a3_s: marker
+a3_e: marker
+a4_s: marker
+a4_e: marker
+a5_s: marker
+a5_e: marker
+a6_s: marker
+a6_e: marker
+tls: marker
+kicke: kicker, l = 0.9
+bump1: kicker, l = 0.3, hkick = kick
+end: marker
+drift0: drift, l = 4.3 - 0
+drift1: drift, l = 4.65 - 0.5/2 - 4.3
+drift2: drift, l = 5.3 - 0.5/2 - (4.65 + 0.5/2)
+drift3: drift, l = 6.55 - 0.1/2 - (5.3 + 0.5/2)
+drift4: drift, l = 7.7 - 0.3/2 - (6.55 + 0.1/2)
+drift5: drift, l = 8.6 - 1.2/2 - (7.7 + 0.3/2)
+drift6: drift, l = 9.6248093 - 0.3/2 - (8.6 + 1.2/2)
+drift7: drift, l = 12.394634 - 0.5/2 - (9.6248093 + 0.3/2)
+drift8: drift, l = 12.9 - 0.1/2 - (12.394634 + 0.5/2)
+drift9: drift, l = 13.1 - 0.1/2 - (12.9 + 0.1/2)
+drift10: drift, l = 13.25 - (13.1 + 0.1/2)
+drift11: drift, l = 13.85 - (13.5 + 0.5/2)
+drift12: drift, l = 15.1 - 1.6/2 - 13.85
+drift13: drift, l = 16.025 - 0.1/2 - (15.1 + 1.6/2)
+drift14: drift, l = 16.2 - 0.1/2 - (16.025 + 0.1/2)
+drift15: drift, l = 17.3 - 1.6/2 - (16.2 + 0.1/2)
+drift16: drift, l = 18.3 - 0.1/2 - (17.3 + 1.6/2)
+drift17: drift, l = 18.5 - 0.1/2 - (18.3 + 0.1/2)
+drift18: drift, l = 18.9 - 0.5/2 - (18.5 + 0.1/2)
+drift19: drift, l = 19.25 - (18.9 + 0.5/2)
+drift20: drift, l = 20.5 - 1.6/2 - 19.25
+drift21: drift, l = 21.425 - 0.1/2 - (20.5 + 1.6/2)
+drift22: drift, l = 21.6 - 0.1/2 - (21.425 + 0.1/2)
+drift23: drift, l = 22.7 - 1.6/2 - (21.6 + 0.1/2)
+drift24: drift, l = 23.7 - 0.1/2 - (22.7 + 1.6/2)
+drift25: drift, l = 23.9 - 0.1/2 - (23.7 + 0.1/2)
+drift26: drift, l = 24.3 - 0.5/2 - (23.9 + 0.1/2)
+drift27: drift, l = 24.65 - (24.3 + 0.5/2)
+drift28: drift, l = 25.9 - 1.6/2 - 24.65
+drift29: drift, l = 26.825 - 0.1/2 - (25.9 + 1.6/2)
+drift30: drift, l = 27 - 0.1/2 - (26.825 + 0.1/2)
+drift31: drift, l = 28.1 - 1.6/2 - (27 + 0.1/2)
+drift32: drift, l = 29.1 - 0.1/2 - (28.1 + 1.6/2)
+drift33: drift, l = 29.3 - 0.1/2 - (29.1 + 0.1/2)
+drift34: drift, l = 29.7 - 0.5/2 - (29.3 + 0.1/2)
+drift35: drift, l = 30.05 - (29.7 + 0.5/2)
+drift36: drift, l = 31.3 - 1.6/2 - 30.05
+drift37: drift, l = 32.225 - 0.1/2 - (31.3 + 1.6/2)
+drift38: drift, l = 32.4 - 0.1/2 - (32.225 + 0.1/2)
+drift39: drift, l = 33.5 - 1.6/2 - (32.4 + 0.1/2)
+drift40: drift, l = 34.5 - 0.1/2 - (33.5 + 1.6/2)
+drift41: drift, l = 34.7 - 0.1/2 - (34.5 + 0.1/2)
+drift42: drift, l = 35.1 - 0.5/2 - (34.7 + 0.1/2)
+drift43: drift, l = 35.45 - (35.1 + 0.5/2)
+drift44: drift, l = 36.7 - 1.6/2 - 35.45
+drift45: drift, l = 37.625 - 0.1/2 - (36.7 + 1.6/2)
+drift46: drift, l = 37.8 - 0.1/2 - (37.625 + 0.1/2)
+drift47: drift, l = 38.9 - 1.6/2 - (37.8 + 0.1/2)
+drift48: drift, l = 39.9 - 0.1/2 - (38.9 + 1.6/2)
+drift49: drift, l = 40.1 - 0.1/2 - (39.9 + 0.1/2)
+drift50: drift, l = 40.5 - 0.5/2 - (40.1 + 0.1/2)
+drift51: drift, l = 40.85 - (40.5 + 0.5/2)
+drift52: drift, l = 41.605366 - 0.5/2 - 40.85
+drift53: drift, l = 43.327683 - 0.1/2 - (41.605366 + 0.5/2)
+drift54: drift, l = 45.4 - 1.2/2 - (43.327683 + 0.1/2)
+drift55: drift, l = 47.055145 - 0.3/2 - (45.4 + 1.2/2)
+drift56: drift, l = 47.5 - 0.1/2 - (47.055145 + 0.3/2)
+drift57: drift, l = 47.6775725 - 0.1/2 - (47.5 + 0.1/2)
+drift58: drift, l = 48.4 - 0.5/2 - (47.6775725 + 0.1/2)
+drift59: drift, l = 48.7 - (48.4 + 0.5/2)
+drift60: drift, l = 49.05 - 0.5/2 - 48.7
+drift61: drift, l = 51 - 1.8/2 - (49.05 + 0.5/2)
+drift62: drift, l = 56.55 - 0.5/2 - (54.6 + 1.8/2)
+drift63: drift, l = 56.85 - (56.55 + 0.5/2)
+drift64: drift, l = 57.2 - 0.5/2 - 56.85
+drift65: drift, l = 57.8 - 0.1/2 - (57.2 + 0.5/2)
+drift66: drift, l = 57.9224275 - 0.1/2 - (57.8 + 0.1/2)
+drift67: drift, l = 58.544855 - 0.3/2 - (57.9224275 + 0.1/2)
+drift68: drift, l = 60.2 - 1.2/2 - (58.544855 + 0.3/2)
+drift69: drift, l = 62.272317 - 0.1/2 - (60.2 + 1.2/2)
+drift70: drift, l = 63.994634 - 0.5/2 - (62.272317 + 0.1/2)
+drift71: drift, l = 64.5 - 0.1/2 - (63.994634 + 0.5/2)
+drift72: drift, l = 64.7 - 0.1/2 - (64.5 + 0.1/2)
+drift73: drift, l = 64.85 - (64.7 + 0.1/2)
+drift74: drift, l = 65.45 - (65.1 + 0.5/2)
+drift75: drift, l = 66.7 - 1.6/2 - 65.45
+drift76: drift, l = 67.625 - 0.1/2 - (66.7 + 1.6/2)
+drift77: drift, l = 67.8 - 0.1/2 - (67.625 + 0.1/2)
+drift78: drift, l = 68.9 - 1.6/2 - (67.8 + 0.1/2)
+drift79: drift, l = 69.9 - 0.1/2 - (68.9 + 1.6/2)
+drift80: drift, l = 70.1 - 0.1/2 - (69.9 + 0.1/2)
+drift81: drift, l = 70.5 - 0.5/2 - (70.1 + 0.1/2)
+drift82: drift, l = 70.85 - (70.5 + 0.5/2)
+drift83: drift, l = 72.1 - 1.6/2 - 70.85
+drift84: drift, l = 73.025 - 0.1/2 - (72.1 + 1.6/2)
+drift85: drift, l = 73.2 - 0.1/2 - (73.025 + 0.1/2)
+drift86: drift, l = 74.3 - 1.6/2 - (73.2 + 0.1/2)
+drift87: drift, l = 75.3 - 0.1/2 - (74.3 + 1.6/2)
+drift88: drift, l = 75.5 - 0.1/2 - (75.3 + 0.1/2)
+drift89: drift, l = 75.9 - 0.5/2 - (75.5 + 0.1/2)
+drift90: drift, l = 76.25 - (75.9 + 0.5/2)
+drift91: drift, l = 77.5 - 1.6/2 - 76.25
+drift92: drift, l = 78.425 - 0.1/2 - (77.5 + 1.6/2)
+drift93: drift, l = 78.6 - 0.1/2 - (78.425 + 0.1/2)
+drift94: drift, l = 79.7 - 1.6/2 - (78.6 + 0.1/2)
+drift95: drift, l = 80.7 - 0.1/2 - (79.7 + 1.6/2)
+drift96: drift, l = 80.9 - 0.1/2 - (80.7 + 0.1/2)
+drift97: drift, l = 81.3 - 0.5/2 - (80.9 + 0.1/2)
+drift98: drift, l = 81.65 - (81.3 + 0.5/2)
+drift99: drift, l = 82.9 - 1.6/2 - 81.65
+drift100: drift, l = 83.825 - 0.1/2 - (82.9 + 1.6/2)
+drift101: drift, l = 84 - 0.1/2 - (83.825 + 0.1/2)
+drift102: drift, l = 85.1 - 1.6/2 - (84 + 0.1/2)
+drift103: drift, l = 86.1 - 0.1/2 - (85.1 + 1.6/2)
+drift104: drift, l = 86.3 - 0.1/2 - (86.1 + 0.1/2)
+drift105: drift, l = 86.7 - 0.5/2 - (86.3 + 0.1/2)
+drift106: drift, l = 87.05 - (86.7 + 0.5/2)
+drift107: drift, l = 88.3 - 1.6/2 - 87.05
+drift108: drift, l = 89.225 - 0.1/2 - (88.3 + 1.6/2)
+drift109: drift, l = 89.4 - 0.1/2 - (89.225 + 0.1/2)
+drift110: drift, l = 90.5 - 1.6/2 - (89.4 + 0.1/2)
+drift111: drift, l = 91.5 - 0.1/2 - (90.5 + 1.6/2)
+drift112: drift, l = 91.7 - 0.1/2 - (91.5 + 0.1/2)
+drift113: drift, l = 92.1 - 0.5/2 - (91.7 + 0.1/2)
+drift114: drift, l = 92.45 - (92.1 + 0.5/2)
+drift115: drift, l = 93.205366 - 0.5/2 - 92.45
+drift116: drift, l = 94.005366 - 0.1/2 - (93.205366 + 0.5/2)
+drift117: drift, l = 96.3 - (94.005366 + 0.1/2)
+drift118: drift, l = 97 - 1.2/2 - 96.3
+drift119: drift, l = 97.9 - 0.3/2 - (97 + 1.2/2)
+drift120: drift, l = 99.05 - 0.1/2 - (97.9 + 0.3/2)
+drift121: drift, l = 100.3 - 0.5/2 - (99.05 + 0.1/2)
+drift122: drift, l = 100.95 - 0.5/2 - (100.3 + 0.5/2)
+drift123: drift, l = 109.9 - (100.95 + 0.5/2)
+drift124: drift, l = 110.25 - 0.5/2 - 109.9
+drift125: drift, l = 110.9 - 0.5/2 - (110.25 + 0.5/2)
+drift126: drift, l = 112.15 - 0.1/2 - (110.9 + 0.5/2)
+drift127: drift, l = 113.3 - 0.3/2 - (112.15 + 0.1/2)
+drift128: drift, l = 114.2 - 1.2/2 - (113.3 + 0.3/2)
+drift129: drift, l = 117.194634 - 0.1/2 - (114.2 + 1.2/2)
+drift130: drift, l = 117.994634 - 0.5/2 - (117.194634 + 0.1/2)
+drift131: drift, l = 118.7 - 0.1/2 - (117.994634 + 0.5/2)
+drift132: drift, l = 118.85 - (118.7 + 0.1/2)
+drift133: drift, l = 119.45 - (119.1 + 0.5/2)
+drift134: drift, l = 120.7 - 1.6/2 - 119.45
+drift135: drift, l = 121.625 - 0.1/2 - (120.7 + 1.6/2)
+drift136: drift, l = 121.8 - 0.1/2 - (121.625 + 0.1/2)
+drift137: drift, l = 122.9 - 1.6/2 - (121.8 + 0.1/2)
+drift138: drift, l = 123.9 - 0.1/2 - (122.9 + 1.6/2)
+drift139: drift, l = 124.1 - 0.1/2 - (123.9 + 0.1/2)
+drift140: drift, l = 124.5 - 0.5/2 - (124.1 + 0.1/2)
+drift141: drift, l = 124.85 - (124.5 + 0.5/2)
+drift142: drift, l = 126.1 - 1.6/2 - 124.85
+drift143: drift, l = 127.025 - 0.1/2 - (126.1 + 1.6/2)
+drift144: drift, l = 127.2 - 0.1/2 - (127.025 + 0.1/2)
+drift145: drift, l = 128.3 - 1.6/2 - (127.2 + 0.1/2)
+drift146: drift, l = 129.3 - 0.1/2 - (128.3 + 1.6/2)
+drift147: drift, l = 129.5 - 0.1/2 - (129.3 + 0.1/2)
+drift148: drift, l = 129.9 - 0.5/2 - (129.5 + 0.1/2)
+drift149: drift, l = 130.25 - (129.9 + 0.5/2)
+drift150: drift, l = 131.5 - 1.6/2 - 130.25
+drift151: drift, l = 132.425 - 0.1/2 - (131.5 + 1.6/2)
+drift152: drift, l = 132.6 - 0.1/2 - (132.425 + 0.1/2)
+drift153: drift, l = 133.7 - 1.6/2 - (132.6 + 0.1/2)
+drift154: drift, l = 134.7 - 0.1/2 - (133.7 + 1.6/2)
+drift155: drift, l = 134.9 - 0.1/2 - (134.7 + 0.1/2)
+drift156: drift, l = 135.3 - 0.5/2 - (134.9 + 0.1/2)
+drift157: drift, l = 135.65 - (135.3 + 0.5/2)
+drift158: drift, l = 136.9 - 1.6/2 - 135.65
+drift159: drift, l = 137.825 - 0.1/2 - (136.9 + 1.6/2)
+drift160: drift, l = 138 - 0.1/2 - (137.825 + 0.1/2)
+drift161: drift, l = 139.1 - 1.6/2 - (138 + 0.1/2)
+drift162: drift, l = 140.1 - 0.1/2 - (139.1 + 1.6/2)
+drift163: drift, l = 140.3 - 0.1/2 - (140.1 + 0.1/2)
+drift164: drift, l = 140.7 - 0.5/2 - (140.3 + 0.1/2)
+drift165: drift, l = 141.05 - (140.7 + 0.5/2)
+drift166: drift, l = 142.3 - 1.6/2 - 141.05
+drift167: drift, l = 143.225 - 0.1/2 - (142.3 + 1.6/2)
+drift168: drift, l = 143.4 - 0.1/2 - (143.225 + 0.1/2)
+drift169: drift, l = 144.5 - 1.6/2 - (143.4 + 0.1/2)
+drift170: drift, l = 145.5 - 0.1/2 - (144.5 + 1.6/2)
+drift171: drift, l = 145.7 - 0.1/2 - (145.5 + 0.1/2)
+drift172: drift, l = 146.1 - 0.5/2 - (145.7 + 0.1/2)
+drift173: drift, l = 146.45 - (146.1 + 0.5/2)
+drift174: drift, l = 147.205366 - 0.5/2 - 146.45
+drift175: drift, l = 148.927683 - 0.1/2 - (147.205366 + 0.5/2)
+drift176: drift, l = 151 - 1.2/2 - (148.927683 + 0.1/2)
+drift177: drift, l = 152.655145 - 0.3/2 - (151 + 1.2/2)
+drift178: drift, l = 153.1 - 0.1/2 - (152.655145 + 0.3/2)
+drift179: drift, l = 153.2775725 - 0.1/2 - (153.1 + 0.1/2)
+drift180: drift, l = 154 - 0.5/2 - (153.2775725 + 0.1/2)
+drift181: drift, l = 154.3 - (154 + 0.5/2)
+drift182: drift, l = 154.65 - 0.5/2 - 154.3
+drift183: drift, l = 156.6 - 1.8/2 - (154.65 + 0.5/2)
+drift184: drift, l = 162.15 - 0.5/2 - (160.2 + 1.8/2)
+drift185: drift, l = 162.45 - (162.15 + 0.5/2)
+drift186: drift, l = 162.8 - 0.5/2 - 162.45
+drift187: drift, l = 163.4 - 0.1/2 - (162.8 + 0.5/2)
+drift188: drift, l = 163.5224275 - 0.1/2 - (163.4 + 0.1/2)
+drift189: drift, l = 164.144855 - 0.3/2 - (163.5224275 + 0.1/2)
+drift190: drift, l = 165.8 - 1.2/2 - (164.144855 + 0.3/2)
+drift191: drift, l = 168.794634 - 0.1/2 - (165.8 + 1.2/2)
+drift192: drift, l = 169.594634 - 0.5/2 - (168.794634 + 0.1/2)
+drift193: drift, l = 170.3 - 0.1/2 - (169.594634 + 0.5/2)
+drift194: drift, l = 170.45 - (170.3 + 0.1/2)
+drift195: drift, l = 171.05 - (170.7 + 0.5/2)
+drift196: drift, l = 172.3 - 1.6/2 - 171.05
+drift197: drift, l = 173.225 - 0.1/2 - (172.3 + 1.6/2)
+drift198: drift, l = 173.4 - 0.1/2 - (173.225 + 0.1/2)
+drift199: drift, l = 174.5 - 1.6/2 - (173.4 + 0.1/2)
+drift200: drift, l = 175.5 - 0.1/2 - (174.5 + 1.6/2)
+drift201: drift, l = 175.7 - 0.1/2 - (175.5 + 0.1/2)
+drift202: drift, l = 176.1 - 0.5/2 - (175.7 + 0.1/2)
+drift203: drift, l = 176.45 - (176.1 + 0.5/2)
+drift204: drift, l = 177.7 - 1.6/2 - 176.45
+drift205: drift, l = 178.625 - 0.1/2 - (177.7 + 1.6/2)
+drift206: drift, l = 178.8 - 0.1/2 - (178.625 + 0.1/2)
+drift207: drift, l = 179.9 - 1.6/2 - (178.8 + 0.1/2)
+drift208: drift, l = 180.9 - 0.1/2 - (179.9 + 1.6/2)
+drift209: drift, l = 181.1 - 0.1/2 - (180.9 + 0.1/2)
+drift210: drift, l = 181.5 - 0.5/2 - (181.1 + 0.1/2)
+drift211: drift, l = 181.85 - (181.5 + 0.5/2)
+drift212: drift, l = 183.1 - 1.6/2 - 181.85
+drift213: drift, l = 184.025 - 0.1/2 - (183.1 + 1.6/2)
+drift214: drift, l = 184.2 - 0.1/2 - (184.025 + 0.1/2)
+drift215: drift, l = 185.3 - 1.6/2 - (184.2 + 0.1/2)
+drift216: drift, l = 186.3 - 0.1/2 - (185.3 + 1.6/2)
+drift217: drift, l = 186.5 - 0.1/2 - (186.3 + 0.1/2)
+drift218: drift, l = 186.9 - 0.5/2 - (186.5 + 0.1/2)
+drift219: drift, l = 187.25 - (186.9 + 0.5/2)
+drift220: drift, l = 188.5 - 1.6/2 - 187.25
+drift221: drift, l = 189.425 - 0.1/2 - (188.5 + 1.6/2)
+drift222: drift, l = 189.6 - 0.1/2 - (189.425 + 0.1/2)
+drift223: drift, l = 190.7 - 1.6/2 - (189.6 + 0.1/2)
+drift224: drift, l = 191.7 - 0.1/2 - (190.7 + 1.6/2)
+drift225: drift, l = 191.9 - 0.1/2 - (191.7 + 0.1/2)
+drift226: drift, l = 192.3 - 0.5/2 - (191.9 + 0.1/2)
+drift227: drift, l = 192.65 - (192.3 + 0.5/2)
+drift228: drift, l = 193.9 - 1.6/2 - 192.65
+drift229: drift, l = 194.825 - 0.1/2 - (193.9 + 1.6/2)
+drift230: drift, l = 195 - 0.1/2 - (194.825 + 0.1/2)
+drift231: drift, l = 196.1 - 1.6/2 - (195 + 0.1/2)
+drift232: drift, l = 197.1 - 0.1/2 - (196.1 + 1.6/2)
+drift233: drift, l = 197.3 - 0.1/2 - (197.1 + 0.1/2)
+drift234: drift, l = 197.7 - 0.5/2 - (197.3 + 0.1/2)
+drift235: drift, l = 198.05 - (197.7 + 0.5/2)
+drift236: drift, l = 198.805366 - 0.5/2 - 198.05
+drift237: drift, l = 199.605366 - 0.1/2 - (198.805366 + 0.5/2)
+drift238: drift, l = 201.9 - (199.605366 + 0.1/2)
+drift239: drift, l = 202.6 - 1.2/2 - 201.9
+drift240: drift, l = 203.5 - 0.3/2 - (202.6 + 1.2/2)
+drift241: drift, l = 204.65 - 0.1/2 - (203.5 + 0.3/2)
+drift242: drift, l = 205.9 - 0.5/2 - (204.65 + 0.1/2)
+drift243: drift, l = 206.55 - 0.5/2 - (205.9 + 0.5/2)
+drift244: drift, l = 215.5 - (206.55 + 0.5/2)
+drift245: drift, l = 215.85 - 0.5/2 - 215.5
+drift246: drift, l = 216.5 - 0.5/2 - (215.85 + 0.5/2)
+drift247: drift, l = 217.75 - 0.1/2 - (216.5 + 0.5/2)
+drift248: drift, l = 218.9 - 0.3/2 - (217.75 + 0.1/2)
+drift249: drift, l = 219.8 - 1.2/2 - (218.9 + 0.3/2)
+drift250: drift, l = 222.794634 - 0.1/2 - (219.8 + 1.2/2)
+drift251: drift, l = 223.594634 - 0.5/2 - (222.794634 + 0.1/2)
+drift252: drift, l = 224.3 - 0.1/2 - (223.594634 + 0.5/2)
+drift253: drift, l = 224.45 - (224.3 + 0.1/2)
+drift254: drift, l = 225.05 - (224.7 + 0.5/2)
+drift255: drift, l = 226.3 - 1.6/2 - 225.05
+drift256: drift, l = 227.225 - 0.1/2 - (226.3 + 1.6/2)
+drift257: drift, l = 227.4 - 0.1/2 - (227.225 + 0.1/2)
+drift258: drift, l = 228.5 - 1.6/2 - (227.4 + 0.1/2)
+drift259: drift, l = 229.5 - 0.1/2 - (228.5 + 1.6/2)
+drift260: drift, l = 229.7 - 0.1/2 - (229.5 + 0.1/2)
+drift261: drift, l = 230.1 - 0.5/2 - (229.7 + 0.1/2)
+drift262: drift, l = 230.45 - (230.1 + 0.5/2)
+drift263: drift, l = 231.7 - 1.6/2 - 230.45
+drift264: drift, l = 232.625 - 0.1/2 - (231.7 + 1.6/2)
+drift265: drift, l = 232.8 - 0.1/2 - (232.625 + 0.1/2)
+drift266: drift, l = 233.9 - 1.6/2 - (232.8 + 0.1/2)
+drift267: drift, l = 234.9 - 0.1/2 - (233.9 + 1.6/2)
+drift268: drift, l = 235.1 - 0.1/2 - (234.9 + 0.1/2)
+drift269: drift, l = 235.5 - 0.5/2 - (235.1 + 0.1/2)
+drift270: drift, l = 235.85 - (235.5 + 0.5/2)
+drift271: drift, l = 237.1 - 1.6/2 - 235.85
+drift272: drift, l = 238.025 - 0.1/2 - (237.1 + 1.6/2)
+drift273: drift, l = 238.2 - 0.1/2 - (238.025 + 0.1/2)
+drift274: drift, l = 239.3 - 1.6/2 - (238.2 + 0.1/2)
+drift275: drift, l = 240.3 - 0.1/2 - (239.3 + 1.6/2)
+drift276: drift, l = 240.5 - 0.1/2 - (240.3 + 0.1/2)
+drift277: drift, l = 240.9 - 0.5/2 - (240.5 + 0.1/2)
+drift278: drift, l = 241.25 - (240.9 + 0.5/2)
+drift279: drift, l = 242.5 - 1.6/2 - 241.25
+drift280: drift, l = 243.425 - 0.1/2 - (242.5 + 1.6/2)
+drift281: drift, l = 243.6 - 0.1/2 - (243.425 + 0.1/2)
+drift282: drift, l = 244.7 - 1.6/2 - (243.6 + 0.1/2)
+drift283: drift, l = 245.7 - 0.1/2 - (244.7 + 1.6/2)
+drift284: drift, l = 245.9 - 0.1/2 - (245.7 + 0.1/2)
+drift285: drift, l = 246.3 - 0.5/2 - (245.9 + 0.1/2)
+drift286: drift, l = 246.65 - (246.3 + 0.5/2)
+drift287: drift, l = 247.9 - 1.6/2 - 246.65
+drift288: drift, l = 248.825 - 0.1/2 - (247.9 + 1.6/2)
+drift289: drift, l = 249 - 0.1/2 - (248.825 + 0.1/2)
+drift290: drift, l = 250.1 - 1.6/2 - (249 + 0.1/2)
+drift291: drift, l = 251.1 - 0.1/2 - (250.1 + 1.6/2)
+drift292: drift, l = 251.3 - 0.1/2 - (251.1 + 0.1/2)
+drift293: drift, l = 251.7 - 0.5/2 - (251.3 + 0.1/2)
+drift294: drift, l = 252.05 - (251.7 + 0.5/2)
+drift295: drift, l = 252.805366 - 0.5/2 - 252.05
+drift296: drift, l = 254.527683 - 0.1/2 - (252.805366 + 0.5/2)
+drift297: drift, l = 256.6 - 1.2/2 - (254.527683 + 0.1/2)
+drift298: drift, l = 258.255145 - 0.3/2 - (256.6 + 1.2/2)
+drift299: drift, l = 258.7 - 0.1/2 - (258.255145 + 0.3/2)
+drift300: drift, l = 258.8775725 - 0.1/2 - (258.7 + 0.1/2)
+drift301: drift, l = 259.6 - 0.5/2 - (258.8775725 + 0.1/2)
+drift302: drift, l = 259.9 - (259.6 + 0.5/2)
+drift303: drift, l = 260.25 - 0.5/2 - 259.9
+drift304: drift, l = 262.2 - 1.8/2 - (260.25 + 0.5/2)
+drift305: drift, l = 267.75 - 0.5/2 - (265.8 + 1.8/2)
+drift306: drift, l = 268.05 - (267.75 + 0.5/2)
+drift307: drift, l = 268.4 - 0.5/2 - 268.05
+drift308: drift, l = 269.0 - 0.1/2 - (268.4 + 0.5/2)
+drift309: drift, l = 269.1224275 - 0.1/2 - (269.0 + 0.1/2)
+drift310: drift, l = 269.744855 - 0.3/2 - (269.1224275 + 0.1/2)
+drift311: drift, l = 271.4 - 1.2/2 - (269.744855 + 0.3/2)
+drift312: drift, l = 273.472317 - 0.1/2 - (271.4 + 1.2/2)
+drift313: drift, l = 275.194634 - 0.5/2 - (273.472317 + 0.1/2)
+drift314: drift, l = 275.9 - 0.1/2 - (275.194634 + 0.5/2)
+drift315: drift, l = 276.05 - (275.9 + 0.1/2)
+drift316: drift, l = 276.65 - (276.3 + 0.5/2)
+drift317: drift, l = 277.9 - 1.6/2 - 276.65
+drift318: drift, l = 278.825 - 0.1/2 - (277.9 + 1.6/2)
+drift319: drift, l = 279 - 0.1/2 - (278.825 + 0.1/2)
+drift320: drift, l = 280.1 - 1.6/2 - (279 + 0.1/2)
+drift321: drift, l = 281.1 - 0.1/2 - (280.1 + 1.6/2)
+drift322: drift, l = 281.3 - 0.1/2 - (281.1 + 0.1/2)
+drift323: drift, l = 281.7 - 0.5/2 - (281.3 + 0.1/2)
+drift324: drift, l = 282.05 - (281.7 + 0.5/2)
+drift325: drift, l = 283.3 - 1.6/2 - 282.05
+drift326: drift, l = 284.225 - 0.1/2 - (283.3 + 1.6/2)
+drift327: drift, l = 284.4 - 0.1/2 - (284.225 + 0.1/2)
+drift328: drift, l = 285.5 - 1.6/2 - (284.4 + 0.1/2)
+drift329: drift, l = 286.5 - 0.1/2 - (285.5 + 1.6/2)
+drift330: drift, l = 286.7 - 0.1/2 - (286.5 + 0.1/2)
+drift331: drift, l = 287.1 - 0.5/2 - (286.7 + 0.1/2)
+drift332: drift, l = 287.45 - (287.1 + 0.5/2)
+drift333: drift, l = 288.7 - 1.6/2 - 287.45
+drift334: drift, l = 289.625 - 0.1/2 - (288.7 + 1.6/2)
+drift335: drift, l = 289.8 - 0.1/2 - (289.625 + 0.1/2)
+drift336: drift, l = 290.9 - 1.6/2 - (289.8 + 0.1/2)
+drift337: drift, l = 291.9 - 0.1/2 - (290.9 + 1.6/2)
+drift338: drift, l = 292.1 - 0.1/2 - (291.9 + 0.1/2)
+drift339: drift, l = 292.5 - 0.5/2 - (292.1 + 0.1/2)
+drift340: drift, l = 292.85 - (292.5 + 0.5/2)
+drift341: drift, l = 294.1 - 1.6/2 - 292.85
+drift342: drift, l = 295.025 - 0.1/2 - (294.1 + 1.6/2)
+drift343: drift, l = 295.2 - 0.1/2 - (295.025 + 0.1/2)
+drift344: drift, l = 296.3 - 1.6/2 - (295.2 + 0.1/2)
+drift345: drift, l = 297.3 - 0.1/2 - (296.3 + 1.6/2)
+drift346: drift, l = 297.5 - 0.1/2 - (297.3 + 0.1/2)
+drift347: drift, l = 297.9 - 0.5/2 - (297.5 + 0.1/2)
+drift348: drift, l = 298.25 - (297.9 + 0.5/2)
+drift349: drift, l = 299.5 - 1.6/2 - 298.25
+drift350: drift, l = 300.425 - 0.1/2 - (299.5 + 1.6/2)
+drift351: drift, l = 300.6 - 0.1/2 - (300.425 + 0.1/2)
+drift352: drift, l = 301.7 - 1.6/2 - (300.6 + 0.1/2)
+drift353: drift, l = 302.7 - 0.1/2 - (301.7 + 1.6/2)
+drift354: drift, l = 302.9 - 0.1/2 - (302.7 + 0.1/2)
+drift355: drift, l = 303.3 - 0.5/2 - (302.9 + 0.1/2)
+drift356: drift, l = 303.65 - (303.3 + 0.5/2)
+drift357: drift, l = 304.405366 - 0.5/2 - 303.65
+drift358: drift, l = 305.105366 - 0.1/2 - (304.405366 + 0.5/2)
+drift359: drift, l = 306.2751907 - 0.9/2 - (305.105366 + 0.1/2)
+drift360: drift, l = 307.1751907 - 0.3/2 - (306.2751907 + 0.9/2)
+drift361: drift, l = 308.2 - 1.2/2 - (307.1751907 + 0.3/2)
+drift362: drift, l = 309.1 - 0.3/2 - (308.2 + 1.2/2)
+drift363: drift, l = 310.25 - 0.1/2 - (309.1 + 0.3/2)
+drift364: drift, l = 311.5 - 0.5/2 - (310.25 + 0.1/2)
+drift365: drift, l = 312.15 - 0.5/2 - (311.5 + 0.5/2)
+drift366: drift, l = 312.5 - (312.15 + 0.5/2)
+drift367: drift, l = 316.8 - 312.5
+ring: line = (initial, drift0, bpm, drift1, ql3, drift2, ql2, drift3, corxy, drift4, ql1, drift5, bh, drift6, bump2,
+          drift7, qd0, drift8, corxy, drift9, sf, drift10, a1_s, qf1, drift11, bpm, drift12, bd, drift13, corxy, drift14, sd,
+          drift15, bd, drift16, corxy, drift17, sf, drift18, qf1, drift19, bpm, drift20, bd, drift21, corxy, drift22, sd,
+          drift23, bd, drift24, corxy, drift25, sf, drift26, qf1, drift27, bpm, drift28, bd, drift29, corxy, drift30, sd,
+          drift31, bd, drift32, corxy, drift33, sf, drift34, qf1, drift35, bpm, drift36, bd, drift37, corxy, drift38, sd,
+          drift39, bd, drift40, corxy, drift41, sf, drift42, qf1, drift43, bpm, drift44, bd, drift45, corxy, drift46, sd,
+          drift47, bd, drift48, corxy, drift49, sf, drift50, qf1, drift51, bpm, a1_e, drift52, qd0, drift53, corxy, drift54, bh,
+          drift55, qs1, drift56, sh1_0, drift57, corxy, drift58, qs2, drift59, bpm, drift60, qs3, drift61, rfc, rfc, rfc,
+          drift62, qs3, drift63, bpm, drift64, qs2, drift65, sh2_0, drift66, corxy, drift67, qs1, drift68, bh, drift69, corxy,
+          drift70, qd0, drift71, corxy, drift72, sf, drift73, a2_s, qf1, drift74, bpm, drift75, bd, drift76, corxy, drift77, sd,
+          drift78, bd, drift79, corxy, drift80, sf, drift81, qf1, drift82, bpm, drift83, bd, drift84, corxy, drift85, sd,
+          drift86, bd, drift87, corxy, drift88, sf, drift89, qf1, drift90, bpm, drift91, bd, drift92, corxy, drift93, sd,
+          drift94, bd, drift95, corxy, drift96, sf, drift97, qf1, drift98, bpm, drift99, bd, drift100, corxy, drift101, sd,
+          drift102, bd, drift103, corxy, drift104, sf, drift105, qf1, drift106, bpm, drift107, bd, drift108, corxy, drift109, sd,
+          drift110, bd, drift111, corxy, drift112, sf, drift113, qf1, drift114, bpm, a2_e, drift115, qd0, drift116, corxy,
+          drift117, bpm, drift118, bh, drift119, ql1, drift120, corxy, drift121, ql2, drift122, ql3, drift123, bpm, drift124,
+          ql3, drift125, ql2, drift126, corxy, drift127, ql1, drift128, bh, drift129, corxy, drift130, qd0, drift131, sf,
+          drift132, a3_s, qf1, drift133, bpm, drift134, bd, drift135, corxy, drift136, sd, drift137, bd, drift138, corxy,
+          drift139, sf, drift140, qf1, drift141, bpm, drift142, bd, drift143, corxy, drift144, sd, drift145, bd, drift146, corxy,
+          drift147, sf, drift148, qf1, drift149, bpm, drift150, bd, drift151, corxy, drift152, sd, drift153, bd, drift154, corxy,
+          drift155, sf, drift156, qf1, drift157, bpm, drift158, bd, drift159, corxy, drift160, sd, drift161, bd, drift162, corxy,
+          drift163, sf, drift164, qf1, drift165, bpm, drift166, bd, drift167, corxy, drift168, sd, drift169, bd, drift170, corxy,
+          drift171, sf, drift172, qf1, drift173, bpm, a3_e, drift174, qd0, drift175, corxy, drift176, bh, drift177, qs1,
+          drift178, sh1_1, drift179, corxy, drift180, qs2, drift181, bpm, drift182, qs3, drift183, rfc, rfc, rfc, drift184, qs3,
+          drift185, bpm, drift186, qs2, drift187, sh2_1, drift188, corxy, drift189, qs1, drift190, bh, drift191, corxy, drift192,
+          qd0, drift193, sf, drift194, a4_s, qf1, drift195, bpm, drift196, bd, drift197, corxy, drift198, sd, drift199, bd,
+          drift200, corxy, drift201, sf, drift202, qf1, drift203, bpm, drift204, bd, drift205, corxy, drift206, sd, drift207, bd,
+          drift208, corxy, drift209, sf, drift210, qf1, drift211, bpm, drift212, bd, drift213, corxy, drift214, sd, drift215, bd,
+          drift216, corxy, drift217, sf, drift218, qf1, drift219, bpm, drift220, bd, drift221, corxy, drift222, sd, drift223, bd,
+          drift224, corxy, drift225, sf, drift226, qf1, drift227, bpm, drift228, bd, drift229, corxy, drift230, sd, drift231, bd,
+          drift232, corxy, drift233, sf, drift234, qf1, drift235, bpm, a4_e, drift236, qd0, drift237, corxy, drift238, bpm,
+          drift239, bh, drift240, ql1, drift241, corxy, drift242, ql2, drift243, ql3, drift244, bpm, drift245, ql3, drift246,
+          ql2, drift247, corxy, drift248, ql1, drift249, bh, drift250, corxy, drift251, qd0, drift252, sf, drift253, a5_s, qf1,
+          drift254, bpm, drift255, bd, drift256, corxy, drift257, sd, drift258, bd, drift259, corxy, drift260, sf, drift261, qf1,
+          drift262, bpm, drift263, bd, drift264, corxy, drift265, sd, drift266, bd, drift267, corxy, drift268, sf, drift269, qf1,
+          drift270, bpm, drift271, bd, drift272, corxy, drift273, sd, drift274, bd, drift275, corxy, drift276, sf, drift277, qf1,
+          drift278, bpm, drift279, bd, drift280, corxy, drift281, sd, drift282, bd, drift283, corxy, drift284, sf, drift285, qf1,
+          drift286, bpm, drift287, bd, drift288, corxy, drift289, sd, drift290, bd, drift291, corxy, drift292, sf, drift293, qf1,
+          drift294, bpm, a5_e, drift295, qd0, drift296, corxy, drift297, bh, drift298, qs1, drift299, sh1_2, drift300, corxy,
+          drift301, qs2, drift302, bpm, drift303, qs3, drift304, rfc, rfc, rfc, drift305, qs3, drift306, bpm, drift307, qs2,
+          drift308, sh2_2, drift309, corxy, drift310, qs1, drift311, bh, drift312, corxy, drift313, qd0, drift314, sf, drift315,
+          a6_s, qf1, drift316, bpm, drift317, bd, drift318, corxy, drift319, sd, drift320, bd, drift321, corxy, drift322, sf,
+          drift323, qf1, drift324, bpm, drift325, bd, drift326, corxy, drift327, sd, drift328, bd, drift329, corxy, drift330, sf,
+          drift331, qf1, drift332, bpm, drift333, bd, drift334, corxy, drift335, sd, drift336, bd, drift337, corxy, drift338, sf,
+          drift339, qf1, drift340, bpm, drift341, bd, drift342, corxy, drift343, sd, drift344, bd, drift345, corxy, drift346, sf,
+          drift347, qf1, drift348, bpm, drift349, bd, drift350, corxy, drift351, sd, drift352, bd, drift353, corxy, drift354, sf,
+          drift355, qf1, drift356, bpm, a6_e, tls, drift357, qd0, drift358, corxy, drift359, kicke, drift360, bump1, drift361,
+          bh, drift362, ql1, drift363, corxy, drift364, ql2, drift365, ql3, drift366, eseptum, drift367, end)
+
+use, ring
