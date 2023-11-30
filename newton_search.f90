@@ -2,16 +2,15 @@ subroutine Newton_search(h_co,f)
 
   use bmad
   use ptc_interface_mod
-!  use madx_ptc_module
   use pointer_lattice, dpe => dp
   
   implicit none
   type(c_vector_field)  f_rot,h_co
+  type(c_damap) id,rot  
   type(c_ray) f,f1h
   real(dp) epsn0,epsn,epsnb
   integer nmax0,ncut,i,k
   logical potential_exit
-  type(c_damap) id,rot
   complex(dp) dx
 
   ncut=c_%no+1 
@@ -43,7 +42,6 @@ subroutine Newton_search(h_co,f)
         id%v(i)=f_rot%v(i)   
      enddo
 
-
      !    F(x)=0, the x is the fixed point
      !  .oo. does a TPSA inversion of the map, 
      !  ie, taking into account the constant part
@@ -52,15 +50,7 @@ subroutine Newton_search(h_co,f)
      ! Therefore this is part of a Newton search
 
      rot=1
-     !do i=3,c_%nd2
-     ! rot%v(i)=0.0_dp
-     !enddo
-     ! removing all "vertical dependence "  (6f)
      id=id.o.rot   
-     ! adding identity in the y-py planes to allow inversion
-     !do i=3,c_%nd2
-     ! id%v(i)=1.0_dp.cmono.i ! (6g)  
-     !enddo
 
      !doing a linear Newton search if ncut = 2
      id=id.cut.ncut   !  (6h) 
@@ -82,20 +72,17 @@ subroutine Newton_search(h_co,f)
      endif
      epsnb=epsn
 
-     !     write(6,format8) (f1h%x(1:4))  ! check convergence
-
   enddo
 
   if(k>nmax0) then
      write(6,*) " Search was not succesful in", nmax0 , " steps"
   else 
-!     write(6,*) " Search was succesful in", k, " steps"
+     write(6,*) " Search was succesful in", k, " steps"
   endif
 
-
   f=f1h
+  
   call kill(f_rot)
   call kill(id,rot)
-
 
 end subroutine Newton_search
