@@ -1,7 +1,7 @@
 module m_cardano
   use bmad
   implicit none
-  !Cardano's solutions:
+  !Cardano's cubic solutions:
   ! x1 = s + t - b/(3a) ,  real root
   ! x2 = -(s+t)/2 - b/(3a) + i(sqrt(3)/2)(s-t) , first complex root
   ! x3 = -(s+t)/2 - b/(3a) - i(sqrt(3)/2)(s-t) , second complex root

@@ -72,8 +72,6 @@ subroutine ptc_calc_fps_5nux (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
   
   call init(state,map_order,0)
   call find_orbit_x(closed,state,1.e-7_rp,fibre1=p)
-!  print *, "Closed orbit (4): "
-!  write(6,format4) closed(1:4) ! closed orbit
   
   !!  In PTC all objects that contain a TPSA variable 
   !!  or might contain one (..._8)  must be allocated and killed on exit
@@ -91,7 +89,7 @@ subroutine ptc_calc_fps_5nux (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
   call propagate(xs,state,fibre1=p)
   one_turn_map=xs ! PTC -> FPP
   
- ! Resonant Map for the coefficients 
+! Resonant Map for the coefficients 
   normal_form%nres=(c_%no+1)/5
 !  write(6,*) " # of resonance terms ",normal_form%nres
   do i=1, (c_%no+1)/5
@@ -99,13 +97,9 @@ subroutine ptc_calc_fps_5nux (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
   enddo
 
   call c_normal(one_turn_map,normal_form,canonize=.true.)
-!  write(6,*) normal_form%tune(1:3)
-!  write(6,*) normal_form%spin_tune
-
   call clean(normal_form%h_nl,normal_form%h_nl,prec=1.d-10)
   
-  fact=nint(normal_form%tune(1)*5)  ! this determines whether is near 3/5 or 4/5
-!  print *, "factor: ", fact
+  fact=nint(normal_form%tune(1)*5)  ! determines whether is near 3/5 or 4/5
   
   normal_form%h_l=0
   normal_form%h_l%v(1)=( i_*twopi*fact/5.0)*dz_c(1) 
@@ -119,7 +113,7 @@ subroutine ptc_calc_fps_5nux (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
   N_c=id*N_c
   N_c=ci_phasor()*N_c*c_phasor()
 
-  normal_form%h=c_logf_spin(N_c)  ! this shows message "no convergence in c_logf_spin"
+  normal_form%h=c_logf_spin(N_c)  ! 
 
   call d_field_for_demin(normal_form%h, H_res)
   call clean(H_res,H_res,prec=1.d-5)
@@ -136,8 +130,7 @@ subroutine ptc_calc_fps_5nux (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
 !  write(6,*) "axx/2: ", alpha_xx_half
 !  write(6,*) "g: ", g
 
-
-  !computing the fixed points stable and unstable analytical using 5th order results
+! Computing the fixed points stable and unstable analytical using 5th order results
   a1=5/2*g
   a2=2*real(alpha_xx_half)
   a3=0.0_rp
@@ -231,10 +224,6 @@ subroutine ptc_calc_fps_5nux (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
      x1=fix1%x(1:6) + closed
      x2=fix2%x(1:6) + closed
      
-!     write(6,*) " Fixed points of resonance "
-!     write(6,format4) x1(1:4)
-!     write(6,format4) x2(1:4)    
-!     write(6,*) "  "
      write(mfo,format4) x1(1:4)
      write(mfo,format4) x2(1:4)
      
@@ -250,6 +239,6 @@ subroutine ptc_calc_fps_5nux (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
   call kill(normal_form)  
   call kill(N_c)
 
-1000 call ptc_end(graphics_maybe=1,flat_file=.false.)
+  call ptc_end(graphics_maybe=1,flat_file=.false.)
   
 end subroutine ptc_calc_fps_5nux

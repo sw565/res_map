@@ -59,9 +59,7 @@ subroutine ptc_calc_fps (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
   
   call init(state,map_order,0)
   call find_orbit_x(closed,state,1.e-7_rp,fibre1=p)
-!  print *, "Closed orbit (4): "
-!  write(6,format4) closed(1:4) ! closed orbit
-  
+
   !!  In PTC all objects that contain a TPSA variable 
   !!  or might contain one (..._8)  must be allocated and killed on exit
   !!
@@ -81,8 +79,6 @@ subroutine ptc_calc_fps (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
   
   call c_normal(one_turn_map, normal_form)
   call c_fast_canonise(normal_form%atot,a0)
-!  write(6,*) normal_form%tune(1:3)
-!  write(6,*) normal_form%spin_tune
 
 ! check whether it is 3nux or 4nux
   if ( abs(normal_form%tune(1)*3 - nint(normal_form%tune(1)*3)) .lt. 0.08) then
@@ -101,8 +97,7 @@ subroutine ptc_calc_fps (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
   call c_normal(one_turn_map,normal_form,canonize=.true.)
   call clean(normal_form%h_nl,normal_form%h_nl,prec=1.d-10)
   
-  fact=nint(normal_form%tune(1)*n_res)  ! this determines whether is near 1/4 or 3/4
-!  print *, "factor: ", fact
+  fact=nint(normal_form%tune(1)*n_res)  ! determines whether is near 1/3 (1/4) or 2/3 (3/4)
   
   normal_form%h_l=0
   normal_form%h_l%v(1)=( i_*twopi*fact/n_res)*dz_c(1) 
@@ -124,7 +119,7 @@ subroutine ptc_calc_fps (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
 !  write(6,*)
 !  call print(H_res)
 
-  ! Now calculate the fixed points:
+! Now calculate the fixed points:
   del=c_get_coeff(h_res,[1,1,0,0])
   alpha_xx_half= c_get_coeff(h_res,[2,2,0,0])  
 
@@ -164,7 +159,7 @@ subroutine ptc_calc_fps (lat, map_order, jx_fp, o_sfp, o_ufp, closed)
   write(6,'(a,2es15.5)') 'Estimated jx: ', jx_fp
   write(6,'(a,1es15.5,a,2es15.5,a)') ' axx: ', real(alpha_xx_half), ' g: (', real(gamma), aimag(gamma),')'
   write(6,'(a,1es15.5,a,1es15.5)') '|g|: ', abs(gamma), ' phi0: ', phi0
-  write(6,*) '!Note axx and g need to be divided by a factor of -pi in order to compare with others: '
+  write(6,*) 'Note axx and g need to be divided by a factor of -pi in order to compare with formula parameters!'
   write(6,'(a,1es15.5,a,1es15.5)') '|G|: ', abs(gamma)/pi, ' alpha_xx: ', -real(alpha_xx_half)/pi
   
   do j=1, nint(n_res)
