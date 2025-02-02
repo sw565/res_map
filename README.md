@@ -4,6 +4,8 @@ Use the map-based method PTC to calculate the fixed points (locations of resonan
 
 Require library/packages Bmad and sim_utils (See https://github.com/bmad-sim/bmad-ecosystem) 
 
+FPP-PTC libraries are also available at https://github.com/jceepf/fpp_book
+
 Example folder contains a lattice file in Bmad format, input file and an executable file
 
 Run with "res_map input_file"
